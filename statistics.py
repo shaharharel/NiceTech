@@ -39,3 +39,35 @@ def platform_usage(channel_map,data=None):
         plt.bar(range(len(res)), res.values(), align='center')
         plt.xticks(range(len(res)), res2.keys())
         plt.show()
+
+
+def channel_movements(channel_map,data=None):
+    if data is not None:
+        transition_matrix = np.zeros([data.channels['0'].max()+1,data.channels['0'].max()+1])
+        prob_matrix = np.zeros([data.channels['0'].max()+1,data.channels['0'].max()+1])
+        curr_channel = data.df.ChannelTypeID.values
+        prev_channel = data.df.PreviousChannelTypeID.values
+        assert(len(curr_channel==len(prev_channel)))
+        for i in range(len(curr_channel)):
+            transition_matrix[prev_channel[i]][curr_channel[i]]+=1
+        for i in range(transition_matrix.shape[0]):
+            prob_matrix[i,:] = transition_matrix[i,:]/transition_matrix[i,:].sum()
+        channel_map = pd.read_csv(channel_map,index_col=0)
+        channel_map = channel_map.to_dict()[' Unknown']
+        channel_map[0]='Unknown'
+        for i in range(prob_matrix.shape[0]):
+            for j in range(prob_matrix.shape[0]):
+                if prob_matrix[i,j]>0.01:
+                    print channel_map[i] + '  -->  ' + channel_map[j] +'  prob: ' + str(prob_matrix[i,j])
+
+    else:
+        res2 = {2: 343635, 5: 230526, 14: 1626914, 17: 2668, 18: 1245, 20: 2633, 21: 5441, 22: 129, 23: 198, 24: 32148,
+                25: 9988, 26: 1888, 27: 13268, 28: 609, 29: 292}
+        # res = {' Web': 230526, ' RetailAffiliatePartners': 129, ' UnChurnCustomerTriggered': 609,
+        #        ' RetailIndirectNational': 1888, ' RetailIndirectLocal': 9988, ' ChurnCustomerTriggered': 5441,
+        #        ' RetailTelesales': 13268, ' IVR': 1626914, ' RetailCompanyOwnedAndKiosks': 32148,
+        #        ' UnChurnSystemTriggered': 292, ' Voice': 343635, ' ChurnSystemTriggered': 2633, ' Warehouse': 2668,
+        #        ' RetailBusinessSales': 198, ' Insurance': 1245}
+        # plt.bar(range(len(res)), res.values(), align='center')
+        # plt.xticks(range(len(res)), res2.keys())
+        # plt.show()

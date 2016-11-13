@@ -2,20 +2,67 @@ import numpy as np
 import pandas as pd
 import statistics
 import matplotlib.pyplot as plt
+from collections import defaultdict
+from datetime import datetime
+import json
+
+def default(o):
+    if isinstance(o, numpy.integer): return int(o)
+    raise TypeError
+
 class NiceData():
     def __init__(self,data_path,feature_mapping,channel_mapping):
         self.channels = pd.read_csv(channel_mapping)
         self.feature_map = pd.read_csv(feature_mapping)
         self.data = self.create_data_frame(data_path)
         self.channel_map  = channel_mapping
+        self.adjust_data()
+
     def create_data_frame(self,data_path):
         col = self.feature_map.name
-        self.df = pd.read_csv('Magnet.csv',delimiter='|',names=col,usecols=[i for i in range(50)])
+        self.df = pd.read_csv('Magnet.csv',delimiter='|',names=col,usecols=[i for i in range(50) if i not in [2,7,21,22,23,24,25,26,27,28,29,39]])
+
+    def adjust_data(self):
+        #self.df = self.df.drop(['PlaceInSequence','LastSessionInSequence','PlaceInSequenceByChannel',])
+        # add dummies
+        for i in self.df.columns.values:
+            if i[0:16]=='DynamicAttribute' or i not in ['SessionID','SequenceID','PlaceInSequence','LastSessionInSequence','DateID','SessionStartTimeUTC','SessionEndTimeUTC','SessionDuration','PlatformCustomerID','FirstDateID','Master_BAN']:
+                self.df = pd.concat([self.df, pd.get_dummies(self.df[i],prefix=[i])], axis=1)
+                self.df = self.df.drop([i], axis=1)
+        for i in ['SessionStartTimeUTC','SessionEndTimeUTC','DateID','FirstDateID']:
+            temp = pd.to_datetime(self.df[i])
+            temp = (temp - temp.min()) / np.timedelta64(1, 'D')
+            self.df = pd.concat([self.df, temp], axis=1)
+            self.df = self.df.drop([i], axis=1)
+        #self.df.drop(['SessionID','SequenceID','PlatformCustomerID','PlaceInSequence'],axis=1)
+
+    def create_sequences(self,data):
+        sequences = data.df.groupby(['SequenceID'])
+        sequences = sequences.groups
+        matrix_data=[]
+        for key in sequences:
+            data_point = None
+            point = {}
+            sorted_indexs = data.df.ix[sequences[key].values].sort('PlaceInSequence').index.values
+            for idx in sorted_indexs:
+                temp = data.df.ix[idx].drop(['Master_BAN','SessionID','SequenceID','PlatformCustomerID','PlaceInSequence'])
+                #data_point.append(temp.as_matrix())
+                if data_point is None:
+                    data_point = temp.as_matrix()
+                else:
+                    data_point = np.concatenate((data_point,temp))
+            point[key]=list(data_point)
+            matrix_data.append(point)
+        self.write_to_json('new_data.json',matrix_data)
+
+    def write_to_json(path,data):
+        with open(path, 'w') as outfile:
+            json.dump(data, outfile,default=default)
     def statistics(self):
         statistics.sequences_length_stat(self.df)
-        statistics.platform_usage(self.df,self.channels_map)
-    def validate_sequence_order(self,data):
-        return
+        statistics.platform_usage(self.channels, self.df)
+        statistics.channel_movements(self.channels, self.df)
+
 if __name__ == '__main__':
     #statistics.platform_usage('DataDesc.csv')
     statistics.sequences_length_stat()
