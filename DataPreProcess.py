@@ -5,6 +5,19 @@ import matplotlib.pyplot as plt
 from collections import defaultdict
 from datetime import datetime
 import json
+import re
+#import simplejson
+
+FLAGS = re.VERBOSE | re.MULTILINE | re.DOTALL
+WHITESPACE = re.compile(r'[ \t\n\r]*', FLAGS)
+def grabJSON(s):
+    """Takes the largest bite of JSON from the string.
+       Returns (object_parsed, remaining_string)
+    """
+    decoder = simplejson.JSONDecoder()
+    obj, end = decoder.raw_decode(s)
+    end = WHITESPACE.match(s, end).end()
+    return obj, s[end:]
 
 def default(o):
     if isinstance(o, np.integer): return int(o)
@@ -37,10 +50,10 @@ class NiceData():
     def create_sequences(self):
         sequences = self.df.groupby(['SequenceID'])
         sequences = sequences.groups
-        target={}
         for key in sequences:
             data_point = None
             point = {}
+            target={}
             sorted_indexs = self.df.ix[sequences[key].values].sort('PlaceInSequence').index.values
             for idx in sorted_indexs:
                 if key not in target:
@@ -66,6 +79,27 @@ class NiceData():
         statistics.platform_usage(self.channels, self.df)
         statistics.channel_movements(self.channels, self.df)
 
+    def read_prePared_data(self):
+        target=[]
+        with open("channel_target.json") as f:
+            s = f.read()
+        while True:
+            obj, remaining = grabJSON(s)
+            #print ">", obj
+            target.append(obj)
+            s = remaining
+            if not remaining.strip():
+                break
+        data=[]
+        with open("new_data.json") as f:
+            s = f.read()
+        while True:
+            obj, remaining = grabJSON(s)
+            #print ">", obj
+            data.append(obj)
+            s = remaining
+            if not remaining.strip():
+                break
 if __name__ == '__main__':
     #statistics.platform_usage('DataDesc.csv')
     #statistics.sequences_length_stat()
