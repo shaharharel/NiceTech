@@ -19,9 +19,11 @@ class NiceData():
         self.data = self.create_data_frame(data_path)
         self.channel_map  = channel_mapping
         self.adjust_data()
+
     def create_data_frame(self,data_path):
         col = self.feature_map.name
         self.df = pd.read_csv('Magnet.csv',delimiter='|',names=col,usecols=[i for i in range(50) if i not in [2,7,21,22,23,24,25,26,27,29,39]])
+
     def adjust_data(self):
         # add dummies
         for i in self.df.columns.values:
@@ -33,6 +35,7 @@ class NiceData():
             temp = (temp - temp.min()) / np.timedelta64(1, 'D')
             self.df = pd.concat([self.df, temp], axis=1)
             self.df = self.df.drop([i], axis=1)
+
     def create_sequences(self):
         sequences = self.df.groupby(['SequenceID'])
         sequences = sequences.groups
@@ -48,7 +51,7 @@ class NiceData():
             seq_target=[]
             sorted_indexs = self.df.ix[sequences[key].values].sort('PlaceInSequence').index.values
             for idx in sorted_indexs:
-                seq_target.append(self..df.ix[idx].NextChannelTypeID)
+                seq_target.append(self.df.ix[idx].NextChannelTypeID)
                 temp = self.df.ix[idx].drop(['Master_BAN','SessionID','SequenceID','PlatformCustomerID','PlaceInSequence','NextChannelTypeID','LastSessionInSequence'])
                 if data_point is None:
                     data_point = temp.as_matrix()
