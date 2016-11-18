@@ -8,17 +8,6 @@ import json
 import re
 #import simplejson
 
-FLAGS = re.VERBOSE | re.MULTILINE | re.DOTALL
-WHITESPACE = re.compile(r'[ \t\n\r]*', FLAGS)
-def grabJSON(s):
-    """Takes the largest bite of JSON from the string.
-       Returns (object_parsed, remaining_string)
-    """
-    decoder = simplejson.JSONDecoder()
-    obj, end = decoder.raw_decode(s)
-    end = WHITESPACE.match(s, end).end()
-    return obj, s[end:]
-
 def default(o):
     if isinstance(o, np.integer): return int(o)
     raise TypeError
@@ -29,16 +18,14 @@ class NiceData():
         self.feature_map = pd.read_csv(feature_mapping)
         self.data = self.create_data_frame(data_path)
         self.channel_map  = channel_mapping
-        #self.adjust_data()
-
+        self.adjust_data()
     def create_data_frame(self,data_path):
         col = self.feature_map.name
         self.df = pd.read_csv('Magnet.csv',delimiter='|',names=col,usecols=[i for i in range(50) if i not in [2,7,21,22,23,24,25,26,27,29,39]])
-
     def adjust_data(self):
         # add dummies
         for i in self.df.columns.values:
-            if i[0:16]=='DynamicAttribute' or i not in ['NextChannelTypeID','SessionID','SequenceID','PlaceInSequence','LastSessionInSequence','DateID','SessionStartTimeUTC','SessionEndTimeUTC','SessionDuration','PlatformCustomerID','FirstDateID','Master_BAN']:
+            if i[0:16]=='DynamicAttribute' or i not in ['NextChannelTypeID','SessionID','SequenceID','PlaceInSequence','LastSessionInSequence','DateID','SessionStartTimeUTC','SessionEndTimeUTC','SessionDuration','PlatformCustomerID','FirstDateID','Master_BAN','TimeInterval']:
                 self.df = pd.concat([self.df, pd.get_dummies(self.df[i],prefix=[i])], axis=1)
                 self.df = self.df.drop([i], axis=1)
         for i in ['SessionStartTimeUTC','SessionEndTimeUTC','DateID','FirstDateID']:
@@ -46,32 +33,42 @@ class NiceData():
             temp = (temp - temp.min()) / np.timedelta64(1, 'D')
             self.df = pd.concat([self.df, temp], axis=1)
             self.df = self.df.drop([i], axis=1)
-
     def create_sequences(self):
         sequences = self.df.groupby(['SequenceID'])
         sequences = sequences.groups
-        for key in sequences:
+        train_data={}
+        target={}
+        for p, key in enumerate(sequences):
+            print "sequence " + str(p)
+            if p<69369:
+                continue
+            if p==120000:
+                break
             data_point = None
-            point = {}
-            target={}
+            seq_target=[]
             sorted_indexs = self.df.ix[sequences[key].values].sort('PlaceInSequence').index.values
             for idx in sorted_indexs:
-                if key not in target:
-                    target[key]=[]
-                target[key].append(self.df.ix[idx].NextChannelTypeID)
+                seq_target.append(self..df.ix[idx].NextChannelTypeID)
                 temp = self.df.ix[idx].drop(['Master_BAN','SessionID','SequenceID','PlatformCustomerID','PlaceInSequence','NextChannelTypeID','LastSessionInSequence'])
-                #data_point.append(temp.as_matrix())
                 if data_point is None:
                     data_point = temp.as_matrix()
                 else:
                     data_point = np.concatenate((data_point,temp))
-            point[key]=list(data_point)
-            #matrix_data.append(point)
-            self.write_to_json('new_data.json',point)
-            self.write_to_json('channel_target.json',target)
+            #data.df = data.df.drop(sorted_indexs)
+            train_data[key]=list(data_point)
+            target[key] = seq_target
+        self.write_to_json('new_data3.json',train_data)
+        self.write_to_json('channel_target3.json',target)
+
+    def append_to_json(self,path,key,value):
+        with open(path) as json_file:
+            json_decoded = json.load(json_file)
+        json_decoded[key] = value
+        with open(path, 'w') as json_file:
+            json.dump(json_decoded, json_file,default=default)
 
     def write_to_json(self,path,data):
-        with open(path, 'a') as outfile:
+        with open(path, 'w') as outfile:
             json.dump(data, outfile,default=default)
 
     def statistics(self):
@@ -79,27 +76,6 @@ class NiceData():
         statistics.platform_usage(self.channels, self.df)
         statistics.channel_movements(self.channels, self.df)
 
-    def read_prePared_data(self):
-        target=[]
-        with open("channel_target.json") as f:
-            s = f.read()
-        while True:
-            obj, remaining = grabJSON(s)
-            #print ">", obj
-            target.append(obj)
-            s = remaining
-            if not remaining.strip():
-                break
-        data=[]
-        with open("new_data.json") as f:
-            s = f.read()
-        while True:
-            obj, remaining = grabJSON(s)
-            #print ">", obj
-            data.append(obj)
-            s = remaining
-            if not remaining.strip():
-                break
 if __name__ == '__main__':
     #statistics.platform_usage('DataDesc.csv')
     #statistics.sequences_length_stat()
