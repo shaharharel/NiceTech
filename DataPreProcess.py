@@ -1,18 +1,13 @@
 import numpy as np
-import pandas as pd
+#import pandas as pd
 import statistics
 import matplotlib.pyplot as plt
-from collections import defaultdict
 from datetime import datetime
-import json
 import re
-#import simplejson
-
-def default(o):
-    if isinstance(o, np.integer): return int(o)
-    raise TypeError
+import utils
 
 class NiceData():
+
     def __init__(self,data_path,feature_mapping,channel_mapping):
         self.channels = pd.read_csv(channel_mapping)
         self.feature_map = pd.read_csv(feature_mapping)
@@ -43,8 +38,10 @@ class NiceData():
         target={}
         for p, key in enumerate(sequences):
             print "sequence " + str(p)
-            if p<69369:
-                continue
+            if p==50:
+                break
+            #if p<69369:
+                #continue
             if p==120000:
                 break
             data_point = None
@@ -60,19 +57,8 @@ class NiceData():
             #data.df = data.df.drop(sorted_indexs)
             train_data[key]=list(data_point)
             target[key] = seq_target
-        self.write_to_json('new_data3.json',train_data)
-        self.write_to_json('channel_target3.json',target)
-
-    def append_to_json(self,path,key,value):
-        with open(path) as json_file:
-            json_decoded = json.load(json_file)
-        json_decoded[key] = value
-        with open(path, 'w') as json_file:
-            json.dump(json_decoded, json_file,default=default)
-
-    def write_to_json(self,path,data):
-        with open(path, 'w') as outfile:
-            json.dump(data, outfile,default=default)
+        utils.write_to_json('sample.json',train_data)
+        utils.write_to_json('sample_target.json',target)
 
     def statistics(self):
         statistics.sequences_length_stat(self.df)

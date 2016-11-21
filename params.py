@@ -1,0 +1,10 @@
+batch_size = 1
+num_of_labels = 33
+num_of_batches=1000
+lstm_dim = 150
+num_of_features=617
+learning_rate = 0.001
+num_iters = 1000
+number_of_steps = 10
+save_per_iter = 100
+output_path='/output'

@@ -27,3 +27,51 @@ sequences lengths
             # self.writePointToJson(point)
         print "done creating data points" + str(datetime.now())
 
+
+
+            def create_sequences(self):
+        sequences = self.df.groupby(['SequenceID'])
+        sequences = sequences.groups
+        for key in sequences:
+            data_point = None
+            point = {}
+            target={}
+            sorted_indexs = self.df.ix[sequences[key].values].sort('PlaceInSequence').index.values
+            for idx in sorted_indexs:
+                if key not in target:
+                    target[key]=[]
+                target[key].append(self.df.ix[idx].NextChannelTypeID)
+                temp = self.df.ix[idx].drop(['Master_BAN','SessionID','SequenceID','PlatformCustomerID','PlaceInSequence','NextChannelTypeID','LastSessionInSequence'])
+                #data_point.append(temp.as_matrix())
+                if data_point is None:
+                    data_point = temp.as_matrix()
+                else:
+                    data_point = np.concatenate((data_point,temp))
+            point[key]=list(data_point)
+            #matrix_data.append(point)
+            self.write_to_json('new_data.json',point)
+            self.write_to_json('channel_target.json',target)
+
+
+           def read_prePared_data(self):
+        target=[]
+        with open("channel_target.json") as f:
+            s = f.read()
+        while True:
+            obj, remaining = grabJSON(s)
+            #print ">", obj
+            target.append(obj)
+            s = remaining
+            if not remaining.strip():
+                break
+        data=[]
+        with open("new_data.json") as f:
+            s = f.read()
+        while True:
+            obj, remaining = grabJSON(s)
+            #print ">", obj
+            data.append(obj)
+            s = remaining
+            if not remaining.strip():
+                break
+
