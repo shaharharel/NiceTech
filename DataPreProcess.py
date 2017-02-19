@@ -1,9 +1,7 @@
 import numpy as np
-#import pandas as pd
+import pandas as pd
 import statistics
-import matplotlib.pyplot as plt
 from datetime import datetime
-import re
 import utils
 
 class NiceData():
@@ -17,10 +15,9 @@ class NiceData():
 
     def create_data_frame(self,data_path):
         col = self.feature_map.name
-        self.df = pd.read_csv('Magnet.csv',delimiter='|',names=col,usecols=[i for i in range(50) if i not in [2,7,21,22,23,24,25,26,27,29,39]])
+        self.df = pd.read_csv('Magnet.csv',delimiter='|',names=col,usecols=[i for i in range(50) if i not in [2,7,21,22,23,24,25,26,27,29]])
 
     def adjust_data(self):
-        # add dummies
         for i in self.df.columns.values:
             if i[0:16]=='DynamicAttribute' or i not in ['NextChannelTypeID','SessionID','SequenceID','PlaceInSequence','LastSessionInSequence','DateID','SessionStartTimeUTC','SessionEndTimeUTC','SessionDuration','PlatformCustomerID','FirstDateID','Master_BAN','TimeInterval']:
                 self.df = pd.concat([self.df, pd.get_dummies(self.df[i],prefix=[i])], axis=1)
@@ -38,11 +35,9 @@ class NiceData():
         target={}
         for p, key in enumerate(sequences):
             print "sequence " + str(p)
-            if p==50:
-                break
             #if p<69369:
                 #continue
-            if p==120000:
+            if p==70000:
                 break
             data_point = None
             seq_target=[]
@@ -57,8 +52,8 @@ class NiceData():
             #data.df = data.df.drop(sorted_indexs)
             train_data[key]=list(data_point)
             target[key] = seq_target
-        utils.write_to_json('sample.json',train_data)
-        utils.write_to_json('sample_target.json',target)
+        utils.write_to_json('trainA.json',train_data)
+        utils.write_to_json('trainA_target.json',target)
 
     def statistics(self):
         statistics.sequences_length_stat(self.df)

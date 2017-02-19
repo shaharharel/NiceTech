@@ -1,0 +1,456 @@
+session4500000.sess
+
+             precision    recall  f1-score   support
+
+  channel 0       0.99      1.00      0.99      5108
+  channel 2       0.89      0.90      0.90      6374
+  channel 5       0.61      0.28      0.39      1674
+ channel 14       0.92      0.97      0.95     29059
+ channel 17       0.00      0.00      0.00        44
+ channel 18       0.00      0.00      0.00        20
+ channel 20       0.64      0.29      0.39        49
+ channel 21       0.12      0.02      0.03        63
+ channel 22       0.00      0.00      0.00         1
+ channel 23       0.00      0.00      0.00        15
+ channel 24       0.71      0.26      0.38       484
+ channel 25       0.83      0.26      0.40       171
+ channel 26       0.00      0.00      0.00        19
+ channel 27       1.00      0.01      0.02       104
+ channel 29       0.00      0.00      0.00         3
+
+avg / total       0.91      0.92      0.91     43188
+
+
+
+session1500000.sess
+
+             precision    recall  f1-score   support
+
+  channel 0       0.99      1.00      0.99      5108
+  channel 2       0.88      0.90      0.89      6374
+  channel 5       0.58      0.25      0.35      1674
+ channel 14       0.92      0.97      0.94     29059
+ channel 17       0.00      0.00      0.00        44
+ channel 18       0.00      0.00      0.00        20
+ channel 20       0.61      0.29      0.39        49
+ channel 21       0.00      0.00      0.00        63
+ channel 22       0.00      0.00      0.00         1
+ channel 23       0.00      0.00      0.00        15
+ channel 24       0.76      0.23      0.35       484
+ channel 25       0.77      0.13      0.23       171
+ channel 26       0.00      0.00      0.00        19
+ channel 27       0.00      0.00      0.00       104
+ channel 29       0.00      0.00      0.00         3
+
+avg / total       0.90      0.92      0.90     43188
+
+
+
+session8500000.sess
+
+             precision    recall  f1-score   support
+
+  channel 0       0.99      1.00      0.99      5108
+  channel 2       0.90      0.90      0.90      6374
+  channel 5       0.61      0.31      0.41      1674
+ channel 14       0.93      0.97      0.95     29059
+ channel 17       0.00      0.00      0.00        44
+ channel 18       0.00      0.00      0.00        20
+ channel 20       0.65      0.31      0.42        49
+ channel 21       0.25      0.03      0.06        63
+ channel 22       0.00      0.00      0.00         1
+ channel 23       0.00      0.00      0.00        15
+ channel 24       0.71      0.28      0.40       484
+ channel 25       0.81      0.26      0.39       171
+ channel 26       0.00      0.00      0.00        19
+ channel 27       0.71      0.05      0.09       104
+ channel 29       0.00      0.00      0.00         3
+
+avg / total       0.91      0.92      0.91     43188
+
+
+
+session8000000.sess
+
+             precision    recall  f1-score   support
+
+  channel 0       0.99      1.00      0.99      5108
+  channel 2       0.89      0.91      0.90      6374
+  channel 5       0.60      0.31      0.41      1674
+ channel 14       0.93      0.97      0.95     29059
+ channel 17       0.00      0.00      0.00        44
+ channel 18       0.00      0.00      0.00        20
+ channel 20       0.68      0.31      0.42        49
+ channel 21       0.29      0.03      0.06        63
+ channel 22       0.00      0.00      0.00         1
+ channel 23       0.00      0.00      0.00        15
+ channel 24       0.72      0.27      0.39       484
+ channel 25       0.82      0.26      0.40       171
+ channel 26       0.00      0.00      0.00        19
+ channel 27       0.71      0.05      0.09       104
+ channel 29       0.00      0.00      0.00         3
+
+avg / total       0.91      0.92      0.91     43188
+
+
+
+session1000000.sess
+
+             precision    recall  f1-score   support
+
+  channel 0       0.99      1.00      0.99      5108
+  channel 2       0.88      0.90      0.89      6374
+  channel 5       0.58      0.20      0.30      1674
+ channel 14       0.92      0.97      0.94     29059
+ channel 17       0.00      0.00      0.00        44
+ channel 18       0.00      0.00      0.00        20
+ channel 20       0.59      0.27      0.37        49
+ channel 21       0.00      0.00      0.00        63
+ channel 22       0.00      0.00      0.00         1
+ channel 23       0.00      0.00      0.00        15
+ channel 24       0.77      0.21      0.33       484
+ channel 25       0.71      0.10      0.17       171
+ channel 26       0.00      0.00      0.00        19
+ channel 27       0.00      0.00      0.00       104
+ channel 29       0.00      0.00      0.00         3
+
+avg / total       0.90      0.91      0.90     43188
+
+
+
+session2000000.sess
+
+             precision    recall  f1-score   support
+
+  channel 0       0.99      1.00      0.99      5108
+  channel 2       0.88      0.90      0.89      6374
+  channel 5       0.60      0.24      0.34      1674
+ channel 14       0.92      0.97      0.94     29059
+ channel 17       0.00      0.00      0.00        44
+ channel 18       0.00      0.00      0.00        20
+ channel 20       0.61      0.29      0.39        49
+ channel 21       0.00      0.00      0.00        63
+ channel 22       0.00      0.00      0.00         1
+ channel 23       0.00      0.00      0.00        15
+ channel 24       0.72      0.23      0.35       484
+ channel 25       0.78      0.19      0.30       171
+ channel 26       0.00      0.00      0.00        19
+ channel 27       0.00      0.00      0.00       104
+ channel 29       0.00      0.00      0.00         3
+
+avg / total       0.90      0.92      0.90     43188
+
+
+
+session3000000.sess
+
+             precision    recall  f1-score   support
+
+  channel 0       0.99      1.00      0.99      5108
+  channel 2       0.89      0.90      0.89      6374
+  channel 5       0.59      0.27      0.37      1674
+ channel 14       0.92      0.97      0.94     29059
+ channel 17       0.00      0.00      0.00        44
+ channel 18       0.00      0.00      0.00        20
+ channel 20       0.58      0.29      0.38        49
+ channel 21       0.00      0.00      0.00        63
+ channel 22       0.00      0.00      0.00         1
+ channel 23       0.00      0.00      0.00        15
+ channel 24       0.69      0.25      0.36       484
+ channel 25       0.80      0.25      0.38       171
+ channel 26       0.00      0.00      0.00        19
+ channel 27       0.00      0.00      0.00       104
+ channel 29       0.00      0.00      0.00         3
+
+avg / total       0.90      0.92      0.91     43188
+
+
+
+session5500000.sess
+
+             precision    recall  f1-score   support
+
+  channel 0       0.99      1.00      0.99      5108
+  channel 2       0.88      0.91      0.90      6374
+  channel 5       0.60      0.29      0.39      1674
+ channel 14       0.93      0.97      0.95     29059
+ channel 17       0.00      0.00      0.00        44
+ channel 18       0.00      0.00      0.00        20
+ channel 20       0.62      0.31      0.41        49
+ channel 21       0.17      0.02      0.03        63
+ channel 22       0.00      0.00      0.00         1
+ channel 23       0.00      0.00      0.00        15
+ channel 24       0.71      0.27      0.39       484
+ channel 25       0.81      0.28      0.42       171
+ channel 26       0.00      0.00      0.00        19
+ channel 27       0.67      0.02      0.04       104
+ channel 29       0.00      0.00      0.00         3
+
+avg / total       0.91      0.92      0.91     43188
+
+
+
+session9000000.sess
+
+             precision    recall  f1-score   support
+
+  channel 0       0.99      1.00      0.99      5108
+  channel 2       0.89      0.91      0.90      6374
+  channel 5       0.60      0.31      0.41      1674
+ channel 14       0.93      0.97      0.95     29059
+ channel 17       0.00      0.00      0.00        44
+ channel 18       0.00      0.00      0.00        20
+ channel 20       0.68      0.31      0.42        49
+ channel 21       0.33      0.03      0.06        63
+ channel 22       0.00      0.00      0.00         1
+ channel 23       0.00      0.00      0.00        15
+ channel 24       0.72      0.27      0.40       484
+ channel 25       0.82      0.26      0.40       171
+ channel 26       0.00      0.00      0.00        19
+ channel 27       0.83      0.05      0.09       104
+ channel 29       0.00      0.00      0.00         3
+
+avg / total       0.91      0.92      0.91     43188
+
+
+
+session7000000.sess
+
+             precision    recall  f1-score   support
+
+  channel 0       0.99      1.00      0.99      5108
+  channel 2       0.88      0.91      0.90      6374
+  channel 5       0.60      0.29      0.39      1674
+ channel 14       0.93      0.97      0.95     29059
+ channel 17       0.00      0.00      0.00        44
+ channel 18       0.00      0.00      0.00        20
+ channel 20       0.62      0.31      0.41        49
+ channel 21       0.25      0.03      0.06        63
+ channel 22       0.00      0.00      0.00         1
+ channel 23       0.00      0.00      0.00        15
+ channel 24       0.72      0.27      0.39       484
+ channel 25       0.82      0.27      0.41       171
+ channel 26       0.00      0.00      0.00        19
+ channel 27       0.80      0.04      0.07       104
+ channel 29       0.00      0.00      0.00         3
+
+avg / total       0.91      0.92      0.91     43188
+
+
+
+session3500000.sess
+
+             precision    recall  f1-score   support
+
+  channel 0       0.99      1.00      0.99      5108
+  channel 2       0.88      0.90      0.89      6374
+  channel 5       0.60      0.29      0.39      1674
+ channel 14       0.92      0.97      0.95     29059
+ channel 17       0.00      0.00      0.00        44
+ channel 18       0.00      0.00      0.00        20
+ channel 20       0.60      0.31      0.41        49
+ channel 21       0.00      0.00      0.00        63
+ channel 22       0.00      0.00      0.00         1
+ channel 23       0.00      0.00      0.00        15
+ channel 24       0.70      0.25      0.37       484
+ channel 25       0.81      0.26      0.39       171
+ channel 26       0.00      0.00      0.00        19
+ channel 27       0.00      0.00      0.00       104
+ channel 29       0.00      0.00      0.00         3
+
+avg / total       0.90      0.92      0.91     43188
+
+
+
+session5000000.sess
+
+             precision    recall  f1-score   support
+
+  channel 0       0.99      1.00      0.99      5108
+  channel 2       0.89      0.91      0.90      6374
+  channel 5       0.60      0.30      0.40      1674
+ channel 14       0.93      0.97      0.95     29059
+ channel 17       0.00      0.00      0.00        44
+ channel 18       0.00      0.00      0.00        20
+ channel 20       0.65      0.31      0.42        49
+ channel 21       0.17      0.02      0.03        63
+ channel 22       0.00      0.00      0.00         1
+ channel 23       0.00      0.00      0.00        15
+ channel 24       0.72      0.27      0.39       484
+ channel 25       0.83      0.26      0.39       171
+ channel 26       0.00      0.00      0.00        19
+ channel 27       0.50      0.01      0.02       104
+ channel 29       0.00      0.00      0.00         3
+
+avg / total       0.91      0.92      0.91     43188
+
+
+
+session6000000.sess
+
+             precision    recall  f1-score   support
+
+  channel 0       0.99      1.00      0.99      5108
+  channel 2       0.89      0.90      0.90      6374
+  channel 5       0.58      0.32      0.41      1674
+ channel 14       0.93      0.97      0.95     29059
+ channel 17       0.00      0.00      0.00        44
+ channel 18       0.00      0.00      0.00        20
+ channel 20       0.62      0.31      0.41        49
+ channel 21       0.25      0.03      0.06        63
+ channel 22       0.00      0.00      0.00         1
+ channel 23       0.00      0.00      0.00        15
+ channel 24       0.72      0.26      0.39       484
+ channel 25       0.84      0.27      0.41       171
+ channel 26       0.00      0.00      0.00        19
+ channel 27       0.67      0.02      0.04       104
+ channel 29       0.00      0.00      0.00         3
+
+avg / total       0.91      0.92      0.91     43188
+
+
+
+session500000.sess
+
+             precision    recall  f1-score   support
+
+  channel 0       0.99      1.00      0.99      5108
+  channel 2       0.86      0.90      0.88      6374
+  channel 5       0.54      0.20      0.29      1674
+ channel 14       0.92      0.96      0.94     29059
+ channel 17       0.00      0.00      0.00        44
+ channel 18       0.00      0.00      0.00        20
+ channel 20       0.50      0.18      0.27        49
+ channel 21       0.00      0.00      0.00        63
+ channel 22       0.00      0.00      0.00         1
+ channel 23       0.00      0.00      0.00        15
+ channel 24       0.72      0.17      0.27       484
+ channel 25       0.60      0.05      0.10       171
+ channel 26       0.00      0.00      0.00        19
+ channel 27       0.00      0.00      0.00       104
+ channel 29       0.00      0.00      0.00         3
+
+avg / total       0.89      0.91      0.90     43188
+
+
+
+session7500000.sess
+
+             precision    recall  f1-score   support
+
+  channel 0       0.99      1.00      0.99      5108
+  channel 2       0.89      0.90      0.90      6374
+  channel 5       0.60      0.30      0.40      1674
+ channel 14       0.93      0.97      0.95     29059
+ channel 17       0.00      0.00      0.00        44
+ channel 18       0.00      0.00      0.00        20
+ channel 20       0.68      0.31      0.42        49
+ channel 21       0.25      0.03      0.06        63
+ channel 22       0.00      0.00      0.00         1
+ channel 23       0.00      0.00      0.00        15
+ channel 24       0.72      0.27      0.39       484
+ channel 25       0.82      0.26      0.40       171
+ channel 26       0.00      0.00      0.00        19
+ channel 27       0.67      0.04      0.07       104
+ channel 29       0.00      0.00      0.00         3
+
+avg / total       0.91      0.92      0.91     43188
+
+
+
+session9500000.sess
+
+             precision    recall  f1-score   support
+
+  channel 0       0.99      1.00      0.99      5108
+  channel 2       0.89      0.91      0.90      6374
+  channel 5       0.60      0.34      0.43      1674
+ channel 14       0.93      0.97      0.95     29059
+ channel 17       0.00      0.00      0.00        44
+ channel 18       0.00      0.00      0.00        20
+ channel 20       0.68      0.31      0.42        49
+ channel 21       0.29      0.03      0.06        63
+ channel 22       0.00      0.00      0.00         1
+ channel 23       0.00      0.00      0.00        15
+ channel 24       0.72      0.27      0.40       484
+ channel 25       0.82      0.27      0.41       171
+ channel 26       0.00      0.00      0.00        19
+ channel 27       0.71      0.05      0.09       104
+ channel 29       0.00      0.00      0.00         3
+
+avg / total       0.91      0.92      0.91     43188
+
+
+
+session4000000.sess
+
+             precision    recall  f1-score   support
+
+  channel 0       0.99      1.00      0.99      5108
+  channel 2       0.89      0.90      0.90      6374
+  channel 5       0.61      0.28      0.38      1674
+ channel 14       0.92      0.97      0.95     29059
+ channel 17       0.00      0.00      0.00        44
+ channel 18       0.00      0.00      0.00        20
+ channel 20       0.61      0.29      0.39        49
+ channel 21       0.00      0.00      0.00        63
+ channel 22       0.00      0.00      0.00         1
+ channel 23       0.00      0.00      0.00        15
+ channel 24       0.69      0.26      0.38       484
+ channel 25       0.84      0.25      0.38       171
+ channel 26       0.00      0.00      0.00        19
+ channel 27       0.00      0.00      0.00       104
+ channel 29       0.00      0.00      0.00         3
+
+avg / total       0.90      0.92      0.91     43188
+
+
+
+session6500000.sess
+
+             precision    recall  f1-score   support
+
+  channel 0       0.99      1.00      0.99      5108
+  channel 2       0.89      0.91      0.90      6374
+  channel 5       0.59      0.30      0.40      1674
+ channel 14       0.93      0.97      0.95     29059
+ channel 17       0.00      0.00      0.00        44
+ channel 18       0.00      0.00      0.00        20
+ channel 20       0.71      0.31      0.43        49
+ channel 21       0.33      0.03      0.06        63
+ channel 22       0.00      0.00      0.00         1
+ channel 23       0.00      0.00      0.00        15
+ channel 24       0.71      0.27      0.39       484
+ channel 25       0.83      0.28      0.42       171
+ channel 26       0.00      0.00      0.00        19
+ channel 27       0.75      0.03      0.06       104
+ channel 29       0.00      0.00      0.00         3
+
+avg / total       0.91      0.92      0.91     43188
+
+
+
+session2500000.sess
+
+             precision    recall  f1-score   support
+
+  channel 0       0.99      1.00      0.99      5108
+  channel 2       0.88      0.90      0.89      6374
+  channel 5       0.59      0.28      0.38      1674
+ channel 14       0.92      0.97      0.94     29059
+ channel 17       0.00      0.00      0.00        44
+ channel 18       0.00      0.00      0.00        20
+ channel 20       0.58      0.29      0.38        49
+ channel 21       0.00      0.00      0.00        63
+ channel 22       0.00      0.00      0.00         1
+ channel 23       0.00      0.00      0.00        15
+ channel 24       0.68      0.25      0.36       484
+ channel 25       0.75      0.22      0.34       171
+ channel 26       0.00      0.00      0.00        19
+ channel 27       0.00      0.00      0.00       104
+ channel 29       0.00      0.00      0.00         3
+
+avg / total       0.90      0.92      0.91     43188
+
+
+

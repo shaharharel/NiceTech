@@ -1,0 +1,5 @@
+model_checkpoint_path: "session4500.sess"
+all_model_checkpoint_paths: "session10.sess"
+all_model_checkpoint_paths: "session1500.sess"
+all_model_checkpoint_paths: "session3000.sess"
+all_model_checkpoint_paths: "session4500.sess"
