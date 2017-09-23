@@ -22,7 +22,7 @@ def get_next_batch(train_data,target_data):
                 target.append(33)
             train = np.asarray(np.split(train,params.number_of_steps))
             target = np.asarray(target)
-            #print idx + ' Sequence Length ' + str(len(target_data[idx]))
+            ##print idx + ' Sequence Length ' + str(len(target_data[idx]))
             train_batch.append(train)
             target_batch.append(target)
             break
